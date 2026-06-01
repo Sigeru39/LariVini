@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Larissa & Vinicius — Identidade Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --burgundy: #5B1E26;
+    --champagne: #C4A96A;
+    --areia: #EDE4D6;
+    --areia-dark: #D5C8B5;
+    --terracota: #CB654A;
+    --oliva: #6B6F4B;
+    --cream: #F5F0E8;
+    --text-muted: #8A7A6A;
+    --text-light: #A09080;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--burgundy);
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--areia);
+    border-bottom: 1px solid var(--areia-dark);
+    text-align: center;
+    padding: 72px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'LV';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(160px, 30vw, 320px);
+    color: rgba(91,30,38,0.04);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    letter-spacing: 16px;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--champagne);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 52px);
+    color: var(--burgundy);
+    letter-spacing: clamp(4px, 1.5vw, 12px);
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(13px, 2vw, 16px);
+    color: var(--champagne);
+    letter-spacing: 4px;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--champagne);
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .hero-divider::before,
+  .hero-divider::after {
+    content: '';
+    display: block;
+    width: clamp(32px, 8vw, 80px);
+    height: 0.5px;
+    background: var(--champagne);
+  }
+
+  /* ── CAROUSEL ── */
+  .carousel-section {
+    padding: clamp(40px, 6vw, 72px) 0 clamp(32px, 5vw, 56px);
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--champagne);
+    text-align: center;
+    margin-bottom: clamp(24px, 4vw, 40px);
+    font-weight: 500;
+  }
+
+  .stage {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .stage:active { cursor: grabbing; }
+
+  .track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+
+  .logo-wrap {
+    width: 100%;
+    max-width: min(480px, 90vw);
+    position: relative;
+  }
+
+  .logo-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--areia);
+    border: 1px solid var(--areia-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .logo-frame img {
+    width: 78%;
+    height: 78%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .logo-frame:hover img {
+    transform: scale(1.03);
+  }
+
+  .slide-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--burgundy);
+    color: var(--areia);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    font-weight: 500;
+  }
+
+  .slide-info {
+    margin-top: clamp(20px, 3vw, 32px);
+    text-align: center;
+    max-width: min(480px, 90vw);
+    width: 100%;
+  }
+
+  .slide-tag {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--champagne);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .slide-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 30px);
+    color: var(--burgundy);
+    letter-spacing: 4px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .slide-line {
+    width: 32px;
+    height: 0.5px;
+    background: var(--champagne);
+    margin: 0 auto 12px;
+  }
+
+  .slide-desc {
+    font-size: clamp(11px, 1.5vw, 13px);
+    color: var(--text-muted);
+    line-height: 1.9;
+    font-weight: 300;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: clamp(24px, 4vw, 40px);
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--areia-dark);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--burgundy);
+    font-size: 18px;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-btn:hover {
+    background: var(--areia);
+    border-color: var(--champagne);
+  }
+
+  .nav-btn:active {
+    transform: scale(0.94);
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--areia-dark);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dot.active {
+    background: var(--champagne);
+    width: 24px;
+  }
+
+  /* ── BOTTOM ── */
+  .bottom {
+    padding: clamp(32px, 5vw, 56px) clamp(20px, 5vw, 60px);
+    border-top: 1px solid var(--areia-dark);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .palette-grid {
+    display: flex;
+    border: 0.5px solid var(--areia-dark);
+    overflow: hidden;
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+
+  .swatch {
+    flex: 1;
+    padding: clamp(12px, 2vw, 20px) 8px clamp(10px, 1.5vw, 16px);
+    text-align: center;
+    min-width: 0;
+  }
+
+  .sw-name {
+    display: block;
+    font-size: clamp(7px, 1.2vw, 9px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sw-hex {
+    display: block;
+    font-size: clamp(7px, 1.1vw, 9px);
+    opacity: 0.8;
+  }
+
+  .typo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 400px) {
+    .typo-grid { grid-template-columns: 1fr; }
+  }
+
+  .typo-card {
+    background: var(--areia);
+    border: 0.5px solid var(--areia-dark);
+    padding: clamp(14px, 2.5vw, 24px);
+  }
+
+  .typo-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 12px;
+    font-weight: 500;
+    display: block;
+  }
+
+  .typo-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 30px);
+    color: var(--burgundy);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .typo-display.mono {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2.5vw, 20px);
+    letter-spacing: 3px;
+  }
+
+  .typo-note {
+    font-size: 9px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--burgundy);
+    text-align: center;
+    padding: clamp(28px, 4vw, 44px) 24px;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: var(--champagne);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(13px, 2vw, 16px);
+    color: rgba(196,169,106,0.5);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow  { animation: fadeUp 0.7s ease both; }
+  .hero-title    { animation: fadeUp 0.7s 0.15s ease both; }
+  .hero-date     { animation: fadeUp 0.7s 0.3s ease both; }
+  .hero-divider  { animation: fadeUp 0.7s 0.45s ease both; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-eyebrow">Identidade Visual</p>
+  <h1 class="hero-title">Larissa &amp; Vinicius</h1>
+  <p class="hero-date">Dezembro 2025</p>
+  <div class="hero-divider">Propostas de Monograma</div>
+</header>
+
+<section class="carousel-section">
+  <p class="section-label">Deslize para ver cada versão</p>
+
+  <div class="stage" id="stage">
+    <div class="track" id="track">
+
+      <div class="slide">
+        <div class="logo-wrap">
+          <div class="logo-frame">
+            <span class="slide-badge">01 / 03</span>
+            <img src="LariViniLogo1.jpg" alt="Proposta 01 — Ramo de Oliva com Bagas"/>
+          </div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-tag">Proposta 01 de 03</p>
+          <h2 class="slide-name">Ramo de Oliva</h2>
+          <div class="slide-line"></div>
+          <p class="slide-desc">Ramo de oliva dourado com bagas — elegância mediterrânea e simbologia de união e prosperidade.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="logo-wrap">
+          <div class="logo-frame">
+            <span class="slide-badge">02 / 03</span>
+            <img src="LariViniLogo2.jpg" alt="Proposta 02 — Ramagem Delicada"/>
+          </div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-tag">Proposta 02 de 03</p>
+          <h2 class="slide-name">Ramagem Delicada</h2>
+          <div class="slide-line"></div>
+          <p class="slide-desc">Ramagem leve com flor sutil — delicadeza botânica que evoca leveza e romantismo primaveril.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="logo-wrap">
+          <div class="logo-frame">
+            <span class="slide-badge">03 / 03</span>
+            <img src="LariVinilogo3.jpg" alt="Proposta 03 — Oliva Horizontal"/>
+          </div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-tag">Proposta 03 de 03</p>
+          <h2 class="slide-name">Oliva Horizontal</h2>
+          <div class="slide-line"></div>
+          <p class="slide-desc">Ramo horizontal com composição assimétrica e moderna — charme natural com presença marcante.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navegação do carrossel">
+    <button class="nav-btn" id="prev" aria-label="Anterior">&#8592;</button>
+    <div class="dots" id="dots">
+      <button class="dot active" data-i="0" aria-label="Proposta 1"></button>
+      <button class="dot" data-i="1" aria-label="Proposta 2"></button>
+      <button class="dot" data-i="2" aria-label="Proposta 3"></button>
+    </div>
+    <button class="nav-btn" id="next" aria-label="Próxima">&#8594;</button>
+  </nav>
+</section>
+
+<div class="bottom">
+  <p class="section-label" style="text-align:left;margin-bottom:16px">Paleta de Cores</p>
+  <div class="palette-grid">
+    <div class="swatch" style="background:#CB654A">
+      <span class="sw-name" style="color:#FDFAF6">Terracota</span>
+      <span class="sw-hex"  style="color:rgba(253,250,246,0.65)">#CB654A</span>
+    </div>
+    <div class="swatch" style="background:#5B1E26">
+      <span class="sw-name" style="color:#FDFAF6">Burgundy</span>
+      <span class="sw-hex"  style="color:rgba(253,250,246,0.65)">#5B1E26</span>
+    </div>
+    <div class="swatch" style="background:#C4A96A">
+      <span class="sw-name" style="color:#FDFAF6">Champagne</span>
+      <span class="sw-hex"  style="color:rgba(253,250,246,0.65)">#C4A96A</span>
+    </div>
+    <div class="swatch" style="background:#EDE4D6;border-right:0.5px solid #D5C8B5">
+      <span class="sw-name" style="color:#8A7A6A">Areia</span>
+      <span class="sw-hex"  style="color:#A09080">#EDE4D6</span>
+    </div>
+    <div class="swatch" style="background:#6B6F4B">
+      <span class="sw-name" style="color:#FDFAF6">Oliva</span>
+      <span class="sw-hex"  style="color:rgba(253,250,246,0.65)">#6B6F4B</span>
+    </div>
+  </div>
+
+  <p class="section-label" style="text-align:left;margin-bottom:16px">Tipografia</p>
+  <div class="typo-grid">
+    <div class="typo-card">
+      <span class="typo-label">Principal</span>
+      <p class="typo-display">Lovelyn</p>
+      <p class="typo-note">Exclusiva · Única · Atemporal</p>
+    </div>
+    <div class="typo-card">
+      <span class="typo-label">Secundária</span>
+      <p class="typo-display mono">Montserrat Light</p>
+      <p class="typo-note">Moderna · Leve · Legível</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-name">Larissa &amp; Vinicius</p>
+  <p class="footer-tagline">Um novo capítulo, a nossa história.</p>
+</footer>
+
+<script>
+(function(){
+  var cur = 0, total = 3, dragging = false, startX = 0, dx = 0;
+  var track  = document.getElementById('track');
+  var stage  = document.getElementById('stage');
+  var dots   = document.querySelectorAll('.dot');
+  var prev   = document.getElementById('prev');
+  var next   = document.getElementById('next');
+
+  function go(n) {
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + cur + '00%)';
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === cur); });
+  }
+
+  prev.addEventListener('click', function(){ go(cur - 1); });
+  next.addEventListener('click', function(){ go(cur + 1); });
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){ go(parseInt(d.dataset.i)); });
+  });
+
+  /* Touch */
+  stage.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  stage.addEventListener('touchend', function(e){
+    dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  /* Mouse drag */
+  stage.addEventListener('mousedown', function(e){
+    dragging = true;
+    startX = e.clientX;
+    track.style.transition = 'none';
+  });
+
+  document.addEventListener('mousemove', function(e){
+    if (!dragging) return;
+    dx = e.clientX - startX;
+    track.style.transform = 'translateX(calc(-' + cur + '00% + ' + dx + 'px))';
+  });
+
+  document.addEventListener('mouseup', function(){
+    if (!dragging) return;
+    dragging = false;
+    track.style.transition = '';
+    if (Math.abs(dx) > 60) go(dx < 0 ? cur + 1 : cur - 1);
+    else track.style.transform = 'translateX(-' + cur + '00%)';
+    dx = 0;
+  });
+
+  /* Keyboard */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft')  go(cur - 1);
+    if (e.key === 'ArrowRight') go(cur + 1);
+  });
+})();
+</script>
+</body>
+</html>
